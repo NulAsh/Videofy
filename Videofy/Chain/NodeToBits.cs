@@ -20,7 +20,7 @@ namespace Videofy.Chain
             //debug
             int cnt = 0;
             //debug
-            while (true)
+            while (Input.IsOpen | (Input.Count > 0))
             {
                 
                 byte[] temp = Input.Take();

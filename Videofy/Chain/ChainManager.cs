@@ -102,14 +102,17 @@ namespace Videofy.Chain
             //node = new NodeDebugRawStorage(pipeout, null);
             nodes.Add(node);
 
-            Task.Run(() =>
+            foreach (ChainNode n in nodes)
+            {
+                Task.Run(() =>
                 {
-                    Parallel.ForEach(nodes, (n) => n.Start());
+                    n.Start();
                     Monitor.Add(1);
                 }
                 ,
                 _tokenSource.Token
-             );
+                );
+            }
 
         }
 
